@@ -49,6 +49,45 @@
     <string name="ubicacion_taller">Ubicación del taller</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
 
+    <!-- Inicio -->
+    <string name="buenos_dias">Buenos días, %s</string>
+    <string name="buenas_tardes">Buenas tardes, %s</string>
+    <string name="buenas_noches">Buenas noches, %s</string>
+    <string name="inicio_subtitulo">Resumen del taller</string>
+    <string name="seccion_hoy">Hoy</string>
+    <string name="seccion_acceso_rapido">Acceso rápido</string>
+    <string name="seccion_atencion">Requiere atención</string>
+    <string name="resumen_activos">Clientes activos</string>
+    <string name="resumen_inactivos">Clientes inactivos</string>
+    <string name="resumen_total">Total de clientes</string>
+    <string name="resumen_pendientes">Por sincronizar</string>
+    <string name="acceso_nuevo_cliente">Nuevo cliente</string>
+    <string name="acceso_clientes">Clientes</string>
+    <string name="acceso_ubicacion">Ubicación</string>
+    <string name="acceso_sincronizar">Sincronizar</string>
+    <string name="acceso_perfil">Perfil</string>
+    <plurals name="cambios_sin_sincronizar">
+        <item quantity="one">%d cambio sin sincronizar</item>
+        <item quantity="other">%d cambios sin sincronizar</item>
+    </plurals>
+    <string name="atencion_pendientes_detalle">Toca para enviarlos a la nube</string>
+    <string name="atencion_al_dia">Todo al día</string>
+    <string name="atencion_al_dia_detalle">No hay cambios pendientes de enviar</string>
+    <string name="estado_sync_descripcion">Estado de sincronización</string>
+
+    <!-- Mas -->
+    <string name="seccion_gestion">Gestión</string>
+    <string name="seccion_sistema">Sistema</string>
+    <string name="mas_clientes_detalle">Cartera de clientes del taller</string>
+    <string name="mas_ubicacion_detalle">Mapa y dirección de CompuCel</string>
+    <string name="sincronizacion">Sincronización</string>
+    <plurals name="cambios_pendientes">
+        <item quantity="one">%d cambio pendiente</item>
+        <item quantity="other">%d cambios pendientes</item>
+    </plurals>
+    <string name="sincronizacion_al_dia">Todo sincronizado</string>
+    <string name="mas_perfil_detalle">Nombre y contraseña</string>
+
     <!-- Clientes -->
     <string name="clientes">Clientes</string>
     <string name="agregar_cliente">Agregar cliente</string>

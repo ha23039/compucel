@@ -41,6 +41,9 @@
         <item name="materialButtonStyle">@style/Widget.CompuCel.Boton</item>
         <item name="textInputStyle">@style/Widget.CompuCel.Campo</item>
         <item name="materialCardViewStyle">@style/Widget.CompuCel.Tarjeta</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.CompuCel.Dialogo</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.CompuCel.BodyLarge</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.CompuCel.BodyLarge</item>
     </style>
 
     <!-- Tema de arranque: solo el color de fondo, para que el unico logo visible sea el de SplashActivity -->
@@ -143,17 +146,20 @@
         <item name="android:minHeight">@dimen/alto_boton</item>
         <item name="shapeAppearance">@style/Forma.CompuCel.Mediana</item>
         <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
     </style>
     <style name="Widget.CompuCel.Boton.Contorno" parent="Widget.Material3.Button.OutlinedButton">
         <item name="android:minHeight">@dimen/alto_boton</item>
         <item name="shapeAppearance">@style/Forma.CompuCel.Mediana</item>
         <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
         <item name="strokeColor">@color/outline_strong</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
     </style>
     <style name="Widget.CompuCel.Boton.Tonal" parent="Widget.Material3.Button.TonalButton">
         <item name="android:minHeight">@dimen/alto_boton</item>
         <item name="shapeAppearance">@style/Forma.CompuCel.Mediana</item>
         <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
     </style>
     <style name="Widget.CompuCel.Boton.Texto" parent="Widget.Material3.Button.TextButton">
         <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
@@ -173,5 +179,44 @@
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearance">@style/Forma.CompuCel.Grande</item>
         <item name="cardElevation">0dp</item>
+    </style>
+    <!-- Indicador de la barra de navegacion: 64 x 32, contenedor primario -->
+    <style name="Widget.CompuCel.Navegacion.Indicador" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">64dp</item>
+        <item name="android:height">32dp</item>
+        <item name="android:color">@color/primary_container</item>
+    </style>
+
+    <!-- Dialogos (AUT-04, CLI-04): radio 28 y boton principal relleno -->
+    <style name="ThemeOverlay.CompuCel.Dialogo" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/Forma.CompuCel.ExtraGrande</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Dialogo.CompuCel.Titulo</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/Dialogo.CompuCel.Cuerpo</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.CompuCel.Boton.Dialogo</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.CompuCel.Boton.Texto</item>
+        <item name="android:background">@color/surface</item>
+    </style>
+    <style name="Dialogo.CompuCel.Titulo" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textAppearance">@style/TextAppearance.CompuCel.TitleLarge</item>
+        <item name="android:textColor">@color/on_surface</item>
+    </style>
+    <style name="Dialogo.CompuCel.Cuerpo" parent="MaterialAlertDialog.Material3.Body.Text">
+        <item name="android:textAppearance">@style/TextAppearance.CompuCel.BodyMedium</item>
+        <item name="android:textColor">@color/on_surface_variant</item>
+    </style>
+    <style name="Widget.CompuCel.Boton.Dialogo" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/Forma.CompuCel.Mediana</item>
+        <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+    </style>
+
+    <!-- Tarjetas pequenas de acceso rapido -->
+    <style name="Widget.CompuCel.Tarjeta.Acceso" parent="Widget.CompuCel.Tarjeta">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 </resources>

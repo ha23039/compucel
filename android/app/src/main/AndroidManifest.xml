@@ -42,6 +42,23 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.PerfilActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.SincronizacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MapaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.clientes.ClienteFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.clientes.ClienteDetalleActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

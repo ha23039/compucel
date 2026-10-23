@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Menu de la Toolbar: estado de sincronizacion visible y opciones del enunciado en el desborde -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_sync"
+        android:title="@string/estado_sync_descripcion"
+        app:actionLayout="@layout/accion_sync"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_perfil"
+        android:title="@string/perfil"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_ubicacion"
+        android:title="@string/ubicacion_taller"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_cerrar_sesion"
+        android:title="@string/cerrar_sesion"
+        app:showAsAction="never" />
+</menu>
