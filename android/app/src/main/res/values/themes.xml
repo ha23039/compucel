@@ -18,15 +18,13 @@
         <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
         <item name="colorOutline">@color/outline_strong</item>
         <item name="colorOutlineVariant">@color/outline</item>
-        <item name="colorError">@color/error_punto</item>
+        <item name="colorError">@color/error_texto_campo</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:windowLightStatusBar">@bool/barras_claras</item>
         <item name="android:windowLightNavigationBar">@bool/barras_claras</item>
 
-        <item name="android:fontFamily">@font/inter</item>
-        <item name="fontFamily">@font/inter</item>
         <item name="textAppearanceHeadlineSmall">@style/TextAppearance.CompuCel.Headline</item>
         <item name="textAppearanceTitleLarge">@style/TextAppearance.CompuCel.TitleLarge</item>
         <item name="textAppearanceTitleMedium">@style/TextAppearance.CompuCel.TitleMedium</item>
@@ -45,15 +43,15 @@
         <item name="materialCardViewStyle">@style/Widget.CompuCel.Tarjeta</item>
     </style>
 
-    <!-- Tema de arranque: el fondo y el icono coinciden con la pantalla de inicio del diseno -->
+    <!-- Tema de arranque: solo el color de fondo, para que el unico logo visible sea el de SplashActivity -->
     <style name="Theme.CompuCel.Splash">
         <item name="android:windowSplashScreenBackground">@color/background</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_splash_sistema</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@android:color/transparent</item>
     </style>
 
     <style name="TextAppearance.CompuCel.Headline" parent="TextAppearance.Material3.HeadlineSmall">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:textSize">24sp</item>
         <item name="lineHeight">32sp</item>
         <item name="android:textFontWeight">600</item>
@@ -65,48 +63,48 @@
         <item name="android:fontFeatureSettings">tnum</item>
     </style>
     <style name="TextAppearance.CompuCel.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">28sp</item>
         <item name="android:textFontWeight">500</item>
         <item name="android:letterSpacing">0</item>
     </style>
     <style name="TextAppearance.CompuCel.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
         <item name="android:textFontWeight">600</item>
         <item name="android:letterSpacing">0</item>
     </style>
     <style name="TextAppearance.CompuCel.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
         <item name="android:textFontWeight">400</item>
         <item name="android:letterSpacing">0</item>
     </style>
     <style name="TextAppearance.CompuCel.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">20sp</item>
         <item name="android:textFontWeight">400</item>
         <item name="android:letterSpacing">0</item>
     </style>
     <style name="TextAppearance.CompuCel.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">20sp</item>
         <item name="android:textFontWeight">500</item>
         <item name="android:letterSpacing">0</item>
     </style>
     <style name="TextAppearance.CompuCel.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16sp</item>
         <item name="android:textFontWeight">500</item>
@@ -114,8 +112,8 @@
     </style>
     <!-- Etiquetas de seccion en mayusculas (HOY, ACCESO RAPIDO, GESTION) -->
     <style name="TextAppearance.CompuCel.Overline" parent="TextAppearance.Material3.LabelSmall">
-        <item name="fontFamily">@font/inter</item>
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:textSize">11sp</item>
         <item name="lineHeight">16sp</item>
         <item name="android:textFontWeight">600</item>

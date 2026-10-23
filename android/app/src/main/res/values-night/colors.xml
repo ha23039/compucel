@@ -29,4 +29,5 @@
     <color name="neutro_fondo">#232A2F</color>
     <color name="neutro_texto">#B4BCC3</color>
     <color name="neutro_punto">#8E98A1</color>
+    <color name="error_texto_campo">#FCA5A5</color>
 </resources>

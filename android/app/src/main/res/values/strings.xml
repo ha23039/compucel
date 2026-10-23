@@ -2,4 +2,57 @@
 <resources>
     <string name="app_name">CompuCel</string>
     <string name="app_lema">Gestión de taller de reparación</string>
+
+    <!-- Inicio de sesion -->
+    <string name="login_titulo">Iniciar sesión</string>
+    <string name="login_subtitulo">Accede al sistema de tu taller</string>
+    <string name="campo_correo">Correo electrónico</string>
+    <string name="campo_clave">Contraseña</string>
+    <string name="recordarme">Recordarme</string>
+    <string name="login_boton">Iniciar sesión</string>
+    <string name="login_sin_cuenta">¿No tienes cuenta?</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="login_entrando">Iniciando sesión…</string>
+
+    <!-- Registro -->
+    <string name="campo_nombre_completo">Nombre completo</string>
+    <string name="campo_confirmar_clave">Confirmar contraseña</string>
+    <string name="registro_creando">Creando cuenta…</string>
+    <string name="registro_listo">Cuenta creada. Ya puedes iniciar sesión</string>
+
+    <!-- Errores de validacion -->
+    <string name="error_credenciales">Correo o contraseña incorrectos</string>
+    <string name="error_claves_distintas">Las contraseñas no coinciden</string>
+    <string name="error_correo_existe">Ya existe una cuenta con este correo</string>
+    <string name="error_correo">Ingresa un correo válido</string>
+    <string name="error_clave">Mínimo 8 caracteres, con letras y números</string>
+    <string name="error_nombre">El nombre debe tener al menos 7 caracteres</string>
+    <string name="error_nombre_obligatorio">El nombre es obligatorio</string>
+    <string name="error_telefono">Formato válido: 0000-0000</string>
+    <string name="error_sin_conexion_registro">Necesitas conexión a internet para crear la cuenta</string>
+    <string name="error_sin_cuenta_local">Sin conexión. Inicia sesión con internet la primera vez en este teléfono</string>
+    <string name="error_general">No se pudo completar la operación. Intenta de nuevo</string>
+
+    <!-- Estado de conexion y sesion -->
+    <string name="sin_conexion">Sin conexión. Los cambios se guardan en el dispositivo.</string>
+    <string name="cerrar_sesion_titulo">¿Cerrar sesión?</string>
+    <string name="cerrar_sesion_pendientes">Tienes %d cambios sin sincronizar. Se conservarán en este dispositivo hasta que vuelvas a iniciar sesión.</string>
+    <string name="cerrar_sesion_simple">Volverás a la pantalla de inicio de sesión.</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sincronizar_ahora">Sincronizar ahora</string>
+
+    <!-- Navegacion y menu -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_clientes">Clientes</string>
+    <string name="nav_mas">Más</string>
+    <string name="perfil">Perfil</string>
+    <string name="ubicacion_taller">Ubicación del taller</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Clientes -->
+    <string name="clientes">Clientes</string>
+    <string name="agregar_cliente">Agregar cliente</string>
+    <string name="guardar">Guardar</string>
+    <string name="inactivar">Inactivar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

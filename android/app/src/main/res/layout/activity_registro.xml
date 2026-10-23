@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AUT-03 Crear cuenta (campos del enunciado: correo, nombre completo, contrasena y confirmacion) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/surface"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/crear_cuenta"
+        app:titleTextAppearance="?attr/textAppearanceTitleLarge"
+        app:titleTextColor="@color/on_surface" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/outline" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/space_4">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/campo_correo"
+                app:endIconDrawable="@drawable/ic_mail"
+                app:endIconMode="custom"
+                app:endIconTint="@color/on_surface_variant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="emailAddress"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:hint="@string/campo_nombre_completo"
+                app:endIconDrawable="@drawable/ic_person"
+                app:endIconMode="custom"
+                app:endIconTint="@color/on_surface_variant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:inputType="textPersonName|textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:hint="@string/campo_clave"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/on_surface_variant"
+                app:helperText="@string/error_clave">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="newPassword"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirmar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:hint="@string/campo_confirmar_clave"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/on_surface_variant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtConfirmar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="newPassword"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btCrear"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/alto_boton"
+                android:layout_marginTop="@dimen/space_4"
+                android:text="@string/crear_cuenta" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

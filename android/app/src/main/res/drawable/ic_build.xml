@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icono icon/build exportado del diseno en Figma -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="31dp"
+    android:height="31dp"
+    android:viewportWidth="31"
+    android:viewportHeight="31"
+    android:tint="@color/on_primary">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M29.3208 24.5417L17.5667 12.7875C18.7292 9.81667 18.0833 6.32917 15.6292 3.875C13.0458 1.29167 9.17083 0.775001 6.07083 2.19583L11.625 7.75L7.75 11.625L2.06667 6.07083C0.516667 9.17083 1.1625 13.0458 3.74583 15.6292C6.2 18.0833 9.6875 18.7292 12.6583 17.5667L24.4125 29.3208C24.9292 29.8375 25.7042 29.8375 26.2208 29.3208L29.1917 26.35C29.8375 25.8333 29.8375 24.9292 29.3208 24.5417Z" />
+</vector>

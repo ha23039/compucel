@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AUT-02 Iniciar sesion (con correo y chip Recordarme, segun el enunciado del parcial) -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/space_6"
+        android:paddingTop="@dimen/space_12"
+        android:paddingEnd="@dimen/space_6"
+        android:paddingBottom="@dimen/space_6">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_circulo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/login_titulo"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:textColor="@color/on_surface" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_1"
+            android:text="@string/login_subtitulo"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="@color/on_surface_variant" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_6"
+            android:hint="@string/campo_correo"
+            app:endIconDrawable="@drawable/ic_mail"
+            app:endIconMode="custom"
+            app:endIconTint="@color/on_surface_variant">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilClave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_6"
+            android:hint="@string/campo_clave"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/on_surface_variant">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRecordarme"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_3"
+            android:text="@string/recordarme" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btIniciar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/alto_boton"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/login_boton" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_6"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_sin_cuenta"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/on_surface_variant" />
+
+            <TextView
+                android:id="@+id/tvCrearCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_1"
+                android:background="?attr/selectableItemBackground"
+                android:minHeight="@dimen/space_12"
+                android:gravity="center"
+                android:text="@string/crear_cuenta"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="@color/primary" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
