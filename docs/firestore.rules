@@ -1,0 +1,41 @@
+rules_version = '2';
+
+// Reglas de Cloud Firestore para CompuCel (fase 1).
+// La app todavia no usa Firebase Authentication: el inicio de sesion se valida con BCrypt
+// en el telefono. Por eso estas reglas no identifican al usuario; lo que hacen es limitar
+// las colecciones y validar la forma de cada documento. En la fase 2 la API REST se
+// encarga de la autenticacion con JWT.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Usuarios: el id del documento es el correo y la contrasena solo viaja como hash BCrypt
+    match /usuarios/{correo} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['correo', 'nombre', 'claveHash', 'actualizadoEn'])
+        && request.resource.data.correo == correo
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() >= 7
+        && request.resource.data.claveHash is string
+        && request.resource.data.claveHash.matches('^[$]2a[$]10[$].{53}$')
+        && request.resource.data.actualizadoEn is int;
+      allow delete: if false;
+    }
+
+    // Clientes del taller: el id es el UUID que genera el telefono
+    match /clientes/{id} {
+      allow read, delete: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['nombre', 'telefono', 'correo', 'direccion', 'activo', 'creadoPor', 'actualizadoEn'])
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() > 0
+        && request.resource.data.telefono is string
+        && request.resource.data.telefono.matches('^[0-9]{4}-[0-9]{4}$')
+        && request.resource.data.activo is bool
+        && request.resource.data.actualizadoEn is int;
+    }
+
+    // Cualquier otra coleccion queda cerrada
+    match /{documento=**} {
+      allow read, write: if false;
+    }
+  }
+}

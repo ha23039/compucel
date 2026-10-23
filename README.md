@@ -6,7 +6,17 @@ Es el proyecto de la asignatura Desarrollo de Aplicaciones Móviles II (DAM-235)
 
 ## Estado
 
-En desarrollo. Estamos en la fase 1 (ver [ROADMAP.md](ROADMAP.md)).
+Versión 0.1.0 (fase 1). Ver [ROADMAP.md](ROADMAP.md) y [CHANGELOG.md](CHANGELOG.md).
+
+Lo que ya funciona en la app:
+
+- Pantalla de inicio, inicio de sesión con la opción Recordarme y registro de usuarios.
+- Contraseñas guardadas con BCrypt en Room y en Firestore.
+- Inicio con resumen del taller, menú en la barra superior y barra de navegación.
+- Clientes: agregar, buscar, ver, editar, inactivar y eliminar.
+- Funcionamiento sin conexión: los cambios quedan pendientes y se envían con "Sincronizar ahora".
+- Perfil: cambio de nombre y de contraseña, apariencia clara u oscura y estado de la sincronización.
+- Mapa con la ubicación del taller.
 
 ## Estructura del repositorio
 
@@ -14,7 +24,47 @@ En desarrollo. Estamos en la fase 1 (ver [ROADMAP.md](ROADMAP.md)).
 |---|---|
 | `android/` | App Android nativa en Java |
 | `api/` | API REST del proyecto (Spring Boot) |
-| `docs/` | Documentación técnica, reglas de Firestore y colección de Postman |
+| `docs/` | Arquitectura y reglas de Firestore |
+
+## Cómo compilar la app
+
+Requisitos: Android Studio con el SDK 36 y JDK 17 o superior.
+
+1. Descargar `google-services.json` desde la consola de Firebase del proyecto (Configuración del proyecto, app Android `sv.edu.ues.dam235.compucel`) y copiarlo en `android/app/`.
+2. En `android/local.properties` agregar la clave de Google Maps:
+   ```
+   MAPS_API_KEY=tu_clave
+   ```
+   La clave está restringida por paquete y huella SHA-1. Para usarla en otro equipo hay que agregar su huella en Google Cloud (Credenciales). La huella de depuración se obtiene con:
+   ```
+   keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+   ```
+3. Abrir la carpeta `android/` en Android Studio y ejecutar la app, o desde la terminal:
+   ```
+   cd android
+   ./gradlew assembleDebug
+   ```
+
+Ninguno de los dos archivos se sube al repositorio.
+
+## Cómo correr la API
+
+Requisitos: JDK 21 y una base MariaDB.
+
+```
+cd api
+DB_URL=jdbc:mariadb://localhost:3306/compucel DB_USER=usuario DB_PASS=clave ./mvnw spring-boot:run
+```
+
+- Información de la API: `http://localhost:8085/api/v1/compucel/info`
+- Documentación (Swagger): `http://localhost:8085/api/v1/compucel/swagger-ui.html`
+
+## Pruebas
+
+```
+cd android && ./gradlew testDebugUnitTest connectedDebugAndroidTest
+cd api && ./mvnw test
+```
 
 ## Integrantes
 

@@ -4,19 +4,19 @@ Así planeamos construir CompuCel. Vamos marcando cada punto cuando queda termin
 
 ## Fase 1: app base con Firebase (Parcial 2)
 
-- [ ] Pantalla de inicio (splash) con el logo
-- [ ] Inicio de sesión con validaciones y opción de recordar usuario
-- [ ] Registro de usuarios con contraseña cifrada
-- [ ] Base de datos local con Room y remota con Cloud Firestore
-- [ ] Pantalla principal con menú y perfil editable
-- [ ] Gestión de clientes (agregar, consultar, editar, inactivar y eliminar)
-- [ ] Funcionamiento sin conexión con sincronización de cambios pendientes
-- [ ] Mapa con la ubicación del taller
+- [x] Pantalla de inicio (splash) con el logo
+- [x] Inicio de sesión con validaciones y opción de recordar usuario
+- [x] Registro de usuarios con contraseña cifrada
+- [x] Base de datos local con Room y remota con Cloud Firestore
+- [x] Pantalla principal con menú y perfil editable
+- [x] Gestión de clientes (agregar, consultar, editar, inactivar y eliminar)
+- [x] Funcionamiento sin conexión con sincronización de cambios pendientes
+- [x] Mapa con la ubicación del taller
 
 ## Fase 2: API REST de CompuCel
 
-- [ ] Base del proyecto Spring Boot con entidades de usuarios y clientes
-- [ ] Documentación de la API con Swagger
+- [x] Base del proyecto Spring Boot con entidades de usuarios y clientes
+- [x] Documentación de la API con Swagger
 - [ ] Endpoints de clientes y colección de Postman
 - [ ] Autenticación con JWT
 - [ ] Órdenes de reparación, inventario de repuestos y técnicos
