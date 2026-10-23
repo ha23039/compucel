@@ -20,6 +20,12 @@ public class ClaveSeguraTest {
     }
 
     @Test
+    public void verificarClaveMuyLargaDevuelveFalsoSinFallar() {
+        String hash = ClaveSegura.hash("abcd1234");
+        assertFalse(ClaveSegura.verificar("a1" + "b".repeat(90), hash));
+    }
+
+    @Test
     public void dosHashesDeLaMismaClaveSonDistintos() {
         assertNotEquals(ClaveSegura.hash("abcd1234"), ClaveSegura.hash("abcd1234"));
     }

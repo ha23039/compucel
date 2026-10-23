@@ -19,6 +19,7 @@ import sv.edu.ues.dam235.compucel.datos.local.EstadoSync;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -150,6 +151,16 @@ public class ClienteRepositorioTest {
         assertNull(r.error);
         assertEquals(EstadoSync.SINCRONIZADO, db.clienteDao().buscar(deOtroTelefono.id).estadoSync);
         assertNull(db.clienteDao().buscar(borradoEnNube.id));
+    }
+
+    @Test
+    public void cambiarActivoDeClienteInexistenteDaErrorSinFallar() throws Exception {
+        assertNotNull(Esperar.respuesta((Resultado<Boolean> r) -> repo.cambiarActivo("no-existe", false, r)).error);
+    }
+
+    @Test
+    public void eliminarClienteInexistenteDaErrorSinFallar() throws Exception {
+        assertNotNull(Esperar.respuesta((Resultado<Boolean> r) -> repo.eliminar("no-existe", r)).error);
     }
 
     @Test

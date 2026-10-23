@@ -160,6 +160,12 @@ public class UsuarioRepositorioTest {
     }
 
     @Test
+    public void actualizarNombreSinUsuarioLocalDaErrorSinFallar() throws Exception {
+        Esperar.Respuesta<Boolean> r = Esperar.respuesta(c -> repo.actualizarNombre("nadie@ues.edu.sv", "Nombre Largo", c));
+        assertNotNull(r.error);
+    }
+
+    @Test
     public void actualizarNombreConRedSeSincroniza() throws Exception {
         registrar("erick@ues.edu.sv");
         Esperar.Respuesta<Boolean> r = Esperar.respuesta(c -> repo.actualizarNombre("erick@ues.edu.sv", "Erick Enrique Hernandez", c));

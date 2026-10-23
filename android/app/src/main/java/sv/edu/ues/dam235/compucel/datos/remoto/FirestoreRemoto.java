@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.MemoryCacheSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class FirestoreRemoto implements RemotoDatos {
 
     @Override
     public void buscarUsuario(String correo, Resultado<UsuarioEntity> resultado) {
-        db.collection(USUARIOS).document(correo).get()
+        db.collection(USUARIOS).document(correo).get(Source.SERVER)
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -74,7 +75,8 @@ public class FirestoreRemoto implements RemotoDatos {
 
     @Override
     public void listarClientes(Resultado<List<ClienteEntity>> resultado) {
-        db.collection(CLIENTES).get()
+        // Solo del servidor: sin red, la cache vacia haria creer que la nube no tiene clientes
+        db.collection(CLIENTES).get(Source.SERVER)
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {

@@ -10,8 +10,8 @@ public final class Validaciones {
 
     // Equivalente a Patterns.EMAIL_ADDRESS, pero usable tambien en pruebas sin Android
     private static final Pattern CORREO = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
-    // Al menos 8 caracteres, solo letras y numeros, con al menos una letra y un numero
-    private static final Pattern CLAVE = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+    // De 8 a 72 caracteres (72 es el maximo de BCrypt), solo letras y numeros, con al menos una de cada uno
+    private static final Pattern CLAVE = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,72}$");
     private static final Pattern TELEFONO = Pattern.compile("^\\d{4}-\\d{4}$");
     private static final int LARGO_MINIMO_NOMBRE = 7;
 

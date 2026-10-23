@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeoutException;
 
 import sv.edu.ues.dam235.compucel.datos.local.ClienteDao;
 import sv.edu.ues.dam235.compucel.datos.local.ClienteEntity;
@@ -32,40 +33,48 @@ public class ClienteRepositorio {
     }
 
     public void guardar(ClienteEntity cliente, Resultado<Boolean> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             cliente.estadoSync = EstadoSync.PENDIENTE;
             cliente.actualizadoEn = System.currentTimeMillis();
             dao.guardar(cliente);
-            resultado.exito(enviar(cliente));
+            resultado.exito(enviarSinEsperarMas(cliente));
         });
     }
 
     public void cambiarActivo(String id, boolean activo, Resultado<Boolean> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             ClienteEntity cliente = dao.buscar(id);
+            if (cliente == null) {
+                resultado.error(new IllegalStateException("El cliente ya no existe"));
+                return;
+            }
             cliente.activo = activo;
             cliente.estadoSync = EstadoSync.PENDIENTE;
             cliente.actualizadoEn = System.currentTimeMillis();
             dao.guardar(cliente);
-            resultado.exito(enviar(cliente));
+            resultado.exito(enviarSinEsperarMas(cliente));
         });
     }
 
     public void eliminar(String id, Resultado<Boolean> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             ClienteEntity cliente = dao.buscar(id);
+            if (cliente == null) {
+                resultado.error(new IllegalStateException("El cliente ya no existe"));
+                return;
+            }
             // Se marca como borrado hasta que la nube confirme
             cliente.eliminado = true;
             cliente.estadoSync = EstadoSync.PENDIENTE;
             cliente.actualizadoEn = System.currentTimeMillis();
             dao.guardar(cliente);
-            resultado.exito(enviar(cliente));
+            resultado.exito(enviarSinEsperarMas(cliente));
         });
     }
 
     /** Trae los clientes de la nube sin tocar los que tienen cambios pendientes en el telefono. */
     public void refrescarDesdeNube(Resultado<Integer> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             if (!conexion.hay()) {
                 resultado.error(new ErrorNegocio(ErrorNegocio.Tipo.SIN_CONEXION));
                 return;
@@ -115,8 +124,19 @@ public class ClienteRepositorio {
         return dao.observarTotal();
     }
 
-    /** Envia un cambio (o un borrado) y solo lo marca sincronizado si no cambio entretanto. */
-    boolean enviar(ClienteEntity cliente) {
+    private boolean enviarSinEsperarMas(ClienteEntity cliente) {
+        try {
+            return enviar(cliente);
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Envia un cambio (o un borrado) y solo lo marca sincronizado si no cambio entretanto.
+     * Lanza TimeoutException si la nube no respondio, para que el Sincronizador no siga esperando.
+     */
+    boolean enviar(ClienteEntity cliente) throws TimeoutException {
         if (!conexion.hay()) {
             return false;
         }
@@ -126,6 +146,8 @@ public class ClienteRepositorio {
             } else {
                 Espera.llamar((Resultado<Void> r) -> remoto.guardarCliente(cliente, r));
             }
+        } catch (TimeoutException e) {
+            throw e;
         } catch (Exception e) {
             return false;
         }
@@ -139,5 +161,16 @@ public class ClienteRepositorio {
             }
         }
         return true;
+    }
+
+    // Un error inesperado se informa a la pantalla en lugar de cerrar la app
+    private void trabajo(Resultado<?> resultado, Runnable tarea) {
+        executor.execute(() -> {
+            try {
+                tarea.run();
+            } catch (RuntimeException e) {
+                resultado.error(e);
+            }
+        });
     }
 }

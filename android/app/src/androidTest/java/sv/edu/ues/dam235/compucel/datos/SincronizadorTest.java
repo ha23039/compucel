@@ -102,6 +102,21 @@ public class SincronizadorTest {
     }
 
     @Test
+    public void conVariosPendientesYRedColgadaSeDetieneEnElPrimerTimeout() throws Exception {
+        clientePendiente("Maria Elena Flores");
+        clientePendiente("Carlos Alberto Menjivar");
+        clientePendiente("Ana Beatriz Cruz");
+        remoto.noResponder = true;
+        long inicio = System.currentTimeMillis();
+        Esperar.Respuesta<ResumenSync> r = Esperar.respuesta(sincronizador::sincronizarTodo, 40);
+        long segundos = (System.currentTimeMillis() - inicio) / 1000;
+        assertTrue("tardo " + segundos + " s", segundos <= 20);
+        assertEquals(3, r.valor.fallidos);
+        assertEquals(0, r.valor.enviados);
+        assertEquals(3, db.clienteDao().pendientes().size());
+    }
+
+    @Test
     public void sincronizarConRemotoQueNoRespondeTerminaPorTimeout() throws Exception {
         clientePendiente("Maria Elena Flores");
         remoto.noResponder = true;

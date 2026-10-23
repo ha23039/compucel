@@ -3,6 +3,7 @@ package sv.edu.ues.dam235.compucel.datos;
 import androidx.lifecycle.LiveData;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeoutException;
 
 import sv.edu.ues.dam235.compucel.datos.local.EstadoSync;
 import sv.edu.ues.dam235.compucel.datos.local.UsuarioDao;
@@ -32,7 +33,7 @@ public class UsuarioRepositorio {
     }
 
     public void registrar(String correo, String nombre, String clave, Resultado<UsuarioEntity> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             String id = Validaciones.normalizarCorreo(correo);
             // El registro necesita internet para comprobar que el correo no exista en la nube
             if (!conexion.hay()) {
@@ -58,7 +59,7 @@ public class UsuarioRepositorio {
     }
 
     public void iniciarSesion(String correo, String clave, Resultado<UsuarioEntity> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             String id = Validaciones.normalizarCorreo(correo);
             UsuarioEntity local = dao.buscar(id);
             if (local != null && ClaveSegura.verificar(clave, local.claveHash)) {
@@ -94,15 +95,19 @@ public class UsuarioRepositorio {
 
     /** Devuelve true si el cambio ya llego a la nube; false si quedo pendiente. */
     public void actualizarNombre(String correo, String nombre, Resultado<Boolean> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             UsuarioEntity usuario = dao.buscar(Validaciones.normalizarCorreo(correo));
+            if (usuario == null) {
+                resultado.error(new ErrorNegocio(ErrorNegocio.Tipo.SIN_CUENTA_LOCAL));
+                return;
+            }
             usuario.nombre = nombre.trim();
             resultado.exito(guardarYEnviar(usuario));
         });
     }
 
     public void cambiarClave(String correo, String actual, String nueva, Resultado<Boolean> resultado) {
-        executor.execute(() -> {
+        trabajo(resultado, () -> {
             UsuarioEntity usuario = dao.buscar(Validaciones.normalizarCorreo(correo));
             if (usuario == null || !ClaveSegura.verificar(actual, usuario.claveHash)) {
                 resultado.error(new ErrorNegocio(ErrorNegocio.Tipo.CREDENCIALES));
@@ -121,16 +126,25 @@ public class UsuarioRepositorio {
         usuario.estadoSync = EstadoSync.PENDIENTE;
         usuario.actualizadoEn = System.currentTimeMillis();
         dao.guardar(usuario);
-        return enviar(usuario);
+        try {
+            return enviar(usuario);
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
-    /** Envia a la nube y marca SINCRONIZADO solo si no hubo otro cambio mientras tanto. */
-    boolean enviar(UsuarioEntity usuario) {
+    /**
+     * Envia a la nube y marca SINCRONIZADO solo si no hubo otro cambio mientras tanto.
+     * Lanza TimeoutException si la nube no respondio.
+     */
+    boolean enviar(UsuarioEntity usuario) throws TimeoutException {
         if (!conexion.hay()) {
             return false;
         }
         try {
             Espera.llamar((Resultado<Void> r) -> remoto.guardarUsuario(usuario, r));
+        } catch (TimeoutException e) {
+            throw e;
         } catch (Exception e) {
             return false;
         }
@@ -154,5 +168,16 @@ public class UsuarioRepositorio {
         } catch (Exception ignorado) {
             // Sin respuesta de la nube se conserva la copia local
         }
+    }
+
+    // Un error inesperado se informa a la pantalla en lugar de cerrar la app
+    private void trabajo(Resultado<?> resultado, Runnable tarea) {
+        executor.execute(() -> {
+            try {
+                tarea.run();
+            } catch (RuntimeException e) {
+                resultado.error(e);
+            }
+        });
     }
 }

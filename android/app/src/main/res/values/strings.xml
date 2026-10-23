@@ -116,9 +116,9 @@
     <string name="placeholder_correo">cliente@correo.com</string>
     <string name="placeholder_direccion">Colonia, ciudad</string>
     <string name="cliente_guardado">Cliente guardado</string>
-    <string name="guardado_local">Guardado en el dispositivo. Se enviará al recuperar la conexión</string>
+    <string name="guardado_local">Guardado en el dispositivo. Se enviará a la nube al sincronizar</string>
     <string name="cliente_eliminado">Cliente eliminado</string>
-    <string name="eliminado_local">Eliminado en el dispositivo. Se borrará de la nube al recuperar la conexión</string>
+    <string name="eliminado_local">Eliminado en el dispositivo. Se borrará de la nube al sincronizar</string>
     <string name="cliente_inactivado">Cliente inactivado</string>
     <string name="cliente_activado">Cliente activado</string>
     <string name="estado_activo">Activo</string>

@@ -35,6 +35,13 @@ public class ValidacionesTest {
     }
 
     @Test
+    public void claveTieneLimiteDe72Caracteres() {
+        String setentaYDos = "a1" + "b".repeat(70);
+        assertTrue(Validaciones.claveValida(setentaYDos));
+        assertFalse(Validaciones.claveValida(setentaYDos + "c"));
+    }
+
+    @Test
     public void nombres() {
         assertTrue(Validaciones.nombreValido("Erick H"));
         assertFalse(Validaciones.nombreValido("  Erick  "));

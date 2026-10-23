@@ -23,6 +23,11 @@ public final class ClaveSegura {
         if (clave == null || hash == null || hash.isEmpty()) {
             return false;
         }
-        return BCrypt.verifyer().verify(clave.toCharArray(), hash.getBytes(StandardCharsets.UTF_8)).verified;
+        try {
+            return BCrypt.verifyer().verify(clave.toCharArray(), hash.getBytes(StandardCharsets.UTF_8)).verified;
+        } catch (IllegalArgumentException e) {
+            // BCrypt no acepta mas de 72 bytes: una clave asi nunca puede ser la correcta
+            return false;
+        }
     }
 }

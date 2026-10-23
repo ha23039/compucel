@@ -1,6 +1,8 @@
 package sv.edu.ues.dam235.compucel.datos;
 
+import java.util.List;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeoutException;
 
 import sv.edu.ues.dam235.compucel.datos.local.ClienteDao;
 import sv.edu.ues.dam235.compucel.datos.local.ClienteEntity;
@@ -37,23 +39,35 @@ public class Sincronizador {
                 return;
             }
             ResumenSync resumen = new ResumenSync();
-            for (UsuarioEntity usuario : usuarioDao.pendientes()) {
-                if (usuarios.enviar(usuario)) {
-                    resumen.enviados++;
-                } else {
-                    resumen.fallidos++;
-                    resumen.errores.add("Perfil de " + usuario.correo + ": no se pudo enviar");
+            List<UsuarioEntity> usuariosPendientes = usuarioDao.pendientes();
+            List<ClienteEntity> clientesPendientes = clienteDao.pendientes();
+            int total = usuariosPendientes.size() + clientesPendientes.size();
+            try {
+                for (UsuarioEntity usuario : usuariosPendientes) {
+                    if (usuarios.enviar(usuario)) {
+                        resumen.enviados++;
+                    } else {
+                        fallo(resumen, "Perfil de " + usuario.correo);
+                    }
                 }
-            }
-            for (ClienteEntity cliente : clienteDao.pendientes()) {
-                if (clientes.enviar(cliente)) {
-                    resumen.enviados++;
-                } else {
-                    resumen.fallidos++;
-                    resumen.errores.add("Cliente " + cliente.nombre + ": no se pudo enviar");
+                for (ClienteEntity cliente : clientesPendientes) {
+                    if (clientes.enviar(cliente)) {
+                        resumen.enviados++;
+                    } else {
+                        fallo(resumen, "Cliente " + cliente.nombre);
+                    }
                 }
+            } catch (TimeoutException e) {
+                // La nube no responde: no tiene sentido esperar 15 s por cada pendiente que falta
+                resumen.fallidos = total - resumen.enviados;
+                resumen.errores.add("Sin respuesta del servidor: no se pudo enviar");
             }
             resultado.exito(resumen);
         });
+    }
+
+    private static void fallo(ResumenSync resumen, String que) {
+        resumen.fallidos++;
+        resumen.errores.add(que + ": no se pudo enviar");
     }
 }
