@@ -25,6 +25,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sesion -> sesion.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        // Clientes queda abierto mientras se implementa JWT (fase 2 del roadmap)
+                        .requestMatchers("/clientes", "/clientes/**").permitAll()
+                        // Spring reenvia los errores (400, 404) a /error: si se protege, todo error se vuelve 403
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers("/info",
                                 "/swagger-ui.html", "/swagger-ui/**",
                                 "/v3/api-docs", "/v3/api-docs/**")

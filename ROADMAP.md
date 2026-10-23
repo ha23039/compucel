@@ -17,7 +17,7 @@ Así planeamos construir CompuCel. Vamos marcando cada punto cuando queda termin
 
 - [x] Base del proyecto Spring Boot con entidades de usuarios y clientes
 - [x] Documentación de la API con Swagger
-- [ ] Endpoints de clientes y colección de Postman
+- [x] Endpoints de clientes y colección de Postman
 - [ ] Autenticación con JWT
 - [ ] Órdenes de reparación, inventario de repuestos y técnicos
 

@@ -1,0 +1,158 @@
+{
+  "info": {
+    "name": "CompuCel API",
+    "description": "Pruebas de la API REST de CompuCel (fase 2). Cambiar la variable base si la API corre en otro equipo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "http://localhost:8085/api/v1/compucel"
+    },
+    {
+      "key": "idCliente",
+      "value": "3f1c2a4e-8b7d-4c1a-9e2f-0a1b2c3d4e5f"
+    }
+  ],
+  "item": [
+    {
+      "name": "Informacion de la API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base}}/info",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "info"
+          ]
+        },
+        "description": "Comprueba que la API esta arriba. No necesita token."
+      }
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Listar clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/clientes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "clientes"
+              ]
+            },
+            "description": ""
+          }
+        },
+        {
+          "name": "Crear o reemplazar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/clientes/{{idCliente}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "clientes",
+                "{{idCliente}}"
+              ]
+            },
+            "description": "El id lo genera la app (UUID). Enviar dos veces el mismo id no duplica el cliente.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Maria Elena Flores\",\n  \"telefono\": \"7654-3210\",\n  \"correo\": \"mflores@correo.test\",\n  \"direccion\": \"Col. Santa Lucia, Santa Ana\",\n  \"activo\": true,\n  \"creadoPor\": \"demo.taller@compucel.test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Buscar cliente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/clientes/{{idCliente}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "clientes",
+                "{{idCliente}}"
+              ]
+            },
+            "description": ""
+          }
+        },
+        {
+          "name": "Telefono invalido (400)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/clientes/{{idCliente}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "clientes",
+                "{{idCliente}}"
+              ]
+            },
+            "description": "Debe responder 400: el telefono debe tener el formato 0000-0000.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Maria Elena Flores\",\n  \"telefono\": \"76543210\",\n  \"correo\": \"mflores@correo.test\",\n  \"direccion\": \"Col. Santa Lucia, Santa Ana\",\n  \"activo\": true,\n  \"creadoPor\": \"demo.taller@compucel.test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/clientes/{{idCliente}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "clientes",
+                "{{idCliente}}"
+              ]
+            },
+            "description": ""
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -24,7 +24,7 @@ Lo que ya funciona en la app:
 |---|---|
 | `android/` | App Android nativa en Java |
 | `api/` | API REST del proyecto (Spring Boot) |
-| `docs/` | Arquitectura y reglas de Firestore |
+| `docs/` | Arquitectura, reglas de Firestore y colección de Postman |
 
 ## Cómo compilar la app
 
@@ -58,6 +58,8 @@ DB_URL=jdbc:mariadb://localhost:3306/compucel DB_USER=usuario DB_PASS=clave ./mv
 
 - Información de la API: `http://localhost:8085/api/v1/compucel/info`
 - Documentación (Swagger): `http://localhost:8085/api/v1/compucel/swagger-ui.html`
+- Clientes: `GET /clientes`, `GET /clientes/{id}`, `PUT /clientes/{id}` y `DELETE /clientes/{id}`. Por ahora estas rutas no piden token; la autenticación con JWT llega en la fase 2.
+- La colección de Postman está en `docs/postman/CompuCel.postman_collection.json`.
 
 ## Pruebas
 

@@ -33,8 +33,8 @@ class InfoControllerTests {
     }
 
     @Test
-    void clientesRequiereAutenticacion() throws Exception {
-        int codigo = mockMvc.perform(get("/clientes")).andReturn().getResponse().getStatus();
+    void usuariosRequiereAutenticacion() throws Exception {
+        int codigo = mockMvc.perform(get("/usuarios")).andReturn().getResponse().getStatus();
         assertTrue(codigo == 401 || codigo == 403, "codigo recibido: " + codigo);
     }
 

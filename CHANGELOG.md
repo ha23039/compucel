@@ -22,4 +22,5 @@ Primera versión de la app, entregada en el Parcial 2.
 - Pantalla de sincronización con pendientes por módulo y errores.
 - Mapa con la ubicación del taller y los tipos de mapa.
 - Base de la API REST con Spring Boot: entidades de usuario y cliente, BCrypt y Swagger.
+- Endpoints de clientes en la API (listar, buscar, crear o reemplazar y eliminar) y colección de Postman.
 - Reglas de Firestore y documento de arquitectura.
