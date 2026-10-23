@@ -67,6 +67,24 @@ public class SesionTest {
     }
 
     @Test
+    public void ultimaSincronizacionSeGuarda() {
+        Sesion s = new Sesion(ctx);
+        assertEquals(0L, s.ultimaSincronizacion());
+        s.guardarUltimaSincronizacion(1792771200000L);
+        assertEquals(1792771200000L, s.ultimaSincronizacion());
+    }
+
+    @Test
+    public void temaPorDefectoEsSistemaYSeGuarda() {
+        Sesion s = new Sesion(ctx);
+        assertEquals(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, s.tema());
+        s.guardarTema(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES);
+        assertEquals(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES, s.tema());
+        s.cerrar();
+        assertEquals(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES, s.tema());
+    }
+
+    @Test
     public void cifradoDevuelveElTextoOriginal() {
         CifradoLocal cifrado = new CifradoLocal();
         String guardado = cifrado.cifrar("Taller2026");

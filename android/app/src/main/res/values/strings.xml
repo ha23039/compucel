@@ -139,4 +139,58 @@
     <string name="cambios_sin_guardar_titulo">¿Descartar los cambios?</string>
     <string name="cambios_sin_guardar_mensaje">Los datos que escribiste no se guardarán.</string>
     <string name="descartar">Descartar</string>
+    <!-- Perfil -->
+    <string name="seccion_cuenta">Cuenta</string>
+    <string name="seccion_apariencia">Apariencia</string>
+    <string name="seccion_sincronizacion">Sincronización</string>
+    <string name="cambiar_nombre">Cambiar nombre</string>
+    <string name="cambiar_nombre_detalle">Se actualiza en el teléfono y en la nube</string>
+    <string name="cambiar_clave">Cambiar contraseña</string>
+    <string name="cambiar_clave_detalle">Pide tu contraseña actual</string>
+    <string name="tema_claro">Claro</string>
+    <string name="tema_oscuro">Oscuro</string>
+    <string name="tema_sistema">Sistema</string>
+    <string name="ultima_sincronizacion">Última sincronización</string>
+    <string name="nunca">Nunca</string>
+    <string name="hoy_hora">Hoy, %s</string>
+    <string name="cambios_por_enviar">Cambios por enviar</string>
+    <string name="version_app">Versión de la app</string>
+    <string name="perfil_sincronizado">Sincronizado</string>
+    <string name="perfil_pendiente">Pendiente de enviar</string>
+    <string name="sincronizando">Sincronizando…</string>
+    <string name="campo_clave_actual">Contraseña actual</string>
+    <string name="campo_clave_nueva">Nueva contraseña</string>
+    <string name="campo_confirmar_nueva">Confirmar nueva contraseña</string>
+    <string name="confirmar_nombre_titulo">¿Guardar el nuevo nombre?</string>
+    <string name="confirmar_nombre_mensaje">Tu nombre cambiará a «%s» en este teléfono y en la nube.</string>
+    <string name="confirmar_clave_titulo">¿Cambiar la contraseña?</string>
+    <string name="confirmar_clave_mensaje">La próxima vez inicia sesión con la nueva contraseña.</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="nombre_actualizado">Nombre actualizado</string>
+    <string name="clave_actualizada">Contraseña actualizada</string>
+    <string name="error_clave_actual">La contraseña actual no es correcta</string>
+    <string name="error_clave_igual">La nueva contraseña debe ser distinta</string>
+
+    <!-- Sincronizacion -->
+    <plurals name="banner_pendientes">
+        <item quantity="one">%d cambio pendiente de enviar al servidor.</item>
+        <item quantity="other">%d cambios pendientes de enviar al servidor.</item>
+    </plurals>
+    <string name="banner_al_dia">Todo está sincronizado con la nube.</string>
+    <string name="seccion_pendientes_modulo">Pendientes por módulo</string>
+    <string name="modulo_perfil">Perfil de usuario</string>
+    <string name="modulo_clientes">Clientes</string>
+    <string name="seccion_errores">Errores</string>
+    <string name="error_envio_detalle">No se pudo enviar. Servidor no disponible.</string>
+    <string name="reintentar">Reintentar</string>
+    <plurals name="sync_enviados">
+        <item quantity="one">Sincronización completa: %d cambio enviado</item>
+        <item quantity="other">Sincronización completa: %d cambios enviados</item>
+    </plurals>
+    <plurals name="sync_fallidos">
+        <item quantity="one">%d cambio no se pudo enviar. Quedó pendiente</item>
+        <item quantity="other">%d cambios no se pudieron enviar. Quedaron pendientes</item>
+    </plurals>
+    <string name="sync_nada">No hay cambios pendientes</string>
+    <string name="sync_sin_conexion">Sin conexión. Los cambios siguen guardados en el dispositivo</string>
 </resources>

@@ -3,6 +3,8 @@ package sv.edu.ues.dam235.compucel.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 /**
  * Datos de sesion guardados con SharedPreferences.
  * - "Recordarme": correo y contrasena (cifrada con CifradoLocal) para rellenar el inicio de sesion.
@@ -15,6 +17,8 @@ public class Sesion {
     private static final String RECORDAR_CLAVE = "recordar_clave";
     private static final String ACTIVA_CORREO = "activa_correo";
     private static final String ACTIVA_NOMBRE = "activa_nombre";
+    private static final String ULTIMA_SINCRONIZACION = "ultima_sincronizacion";
+    private static final String TEMA = "tema";
 
     private final SharedPreferences preferencias;
     private final CifradoLocal cifrado = new CifradoLocal();
@@ -68,5 +72,23 @@ public class Sesion {
 
     public void cerrar() {
         preferencias.edit().remove(ACTIVA_CORREO).remove(ACTIVA_NOMBRE).apply();
+    }
+
+    public void guardarUltimaSincronizacion(long momento) {
+        preferencias.edit().putLong(ULTIMA_SINCRONIZACION, momento).apply();
+    }
+
+    /** 0 si nunca se ha sincronizado desde este telefono. */
+    public long ultimaSincronizacion() {
+        return preferencias.getLong(ULTIMA_SINCRONIZACION, 0L);
+    }
+
+    /** Apariencia elegida en Perfil (claro, oscuro o la del sistema). */
+    public void guardarTema(int modo) {
+        preferencias.edit().putInt(TEMA, modo).apply();
+    }
+
+    public int tema() {
+        return preferencias.getInt(TEMA, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
 }

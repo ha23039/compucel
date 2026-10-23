@@ -243,4 +243,19 @@
         <item name="tint">@color/on_primary</item>
         <item name="shapeAppearanceOverlay">@style/Forma.CompuCel.Grande</item>
     </style>
+
+    <!-- Control segmentado de APARIENCIA (Claro / Oscuro / Sistema) -->
+    <style name="Widget.CompuCel.Segmento" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/chip_fondo</item>
+        <item name="android:textColor">@color/chip_texto</item>
+        <item name="strokeColor">@color/outline_strong</item>
+        <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+    </style>
 </resources>

@@ -33,6 +33,9 @@ import sv.edu.ues.dam235.compucel.util.Red;
 /** Home de la app: Toolbar con menu (Perfil, Ubicacion, Cerrar sesion) y barra de navegacion inferior. */
 public class MainActivity extends AppCompatActivity {
 
+    /** Lo usa Perfil para pedir el cierre de sesion con el mismo dialogo de esta pantalla. */
+    public static final String EXTRA_CERRAR_SESION = "cerrar_sesion";
+
     private MaterialToolbar toolbar;
     private BottomNavigationView navegacion;
     private ImageView ivSync;
@@ -78,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
         pendientes.observe(this, n -> actualizarIconoSync());
         hayRed.observe(this, conectado -> actualizarIconoSync());
         escucharRed();
+    }
+
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getBooleanExtra(EXTRA_CERRAR_SESION, false)) {
+            confirmarCerrarSesion();
+        }
     }
 
     @Override
