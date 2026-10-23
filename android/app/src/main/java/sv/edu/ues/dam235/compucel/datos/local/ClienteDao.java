@@ -30,6 +30,9 @@ public interface ClienteDao {
     @Query("SELECT * FROM clientes WHERE estadoSync = 'PENDIENTE'")
     List<ClienteEntity> pendientes();
 
+    @Query("SELECT * FROM clientes WHERE estadoSync = 'SINCRONIZADO'")
+    List<ClienteEntity> sincronizados();
+
     @Query("SELECT COUNT(*) FROM clientes WHERE estadoSync = 'PENDIENTE'")
     LiveData<Integer> observarPendientes();
 
