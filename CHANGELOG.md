@@ -4,7 +4,7 @@ Aquí anotamos los cambios importantes de cada versión. El formato se basa en [
 
 ## [Sin publicar]
 
-## [0.1.0] - 2026-10-24
+## [0.3.0] - 2026-10-24
 
 Primera versión de la app, entregada en el Parcial 2.
 
@@ -24,3 +24,22 @@ Primera versión de la app, entregada en el Parcial 2.
 - Base de la API REST con Spring Boot: entidades de usuario y cliente, BCrypt y Swagger.
 - Endpoints de clientes en la API (listar, buscar, crear o reemplazar y eliminar) y colección de Postman.
 - Reglas de Firestore y documento de arquitectura.
+
+## [0.2.0] - 2026-09-19
+
+Diseño de la interfaz (Laboratorio 2). No incluye código.
+
+### Agregado
+
+- Sistema de diseño en Figma: colores claro y oscuro, tipografía Inter, espaciado, radios y componentes.
+- 52 pantallas en modo claro y oscuro: autenticación, inicio, clientes, órdenes de reparación, inventario, técnicos, reportes y cuenta.
+- Archivo de diseño: [CompuCel en Figma](https://www.figma.com/design/VSeVRwc7lqx1PfJ2wSAE4E).
+
+## [0.1.0] - 2026-08-30
+
+Documento del proyecto (Laboratorio 1, semana del 24 al 30 de agosto). No incluye código.
+
+### Agregado
+
+- Objetivos, alcance, módulos y restricciones de CompuCel.
+- Arquitectura propuesta: base local con sincronización, modelo DAO y API REST desplegada en la nube.

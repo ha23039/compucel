@@ -6,7 +6,7 @@ Es el proyecto de la asignatura Desarrollo de Aplicaciones Móviles II (DAM-235)
 
 ## Estado
 
-Versión 0.1.0 (fase 1). Ver [ROADMAP.md](ROADMAP.md) y [CHANGELOG.md](CHANGELOG.md).
+Versión 0.3.0 (fase 1). Ver [ROADMAP.md](ROADMAP.md) y [CHANGELOG.md](CHANGELOG.md).
 
 Lo que ya funciona en la app:
 

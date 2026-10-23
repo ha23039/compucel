@@ -2,6 +2,11 @@
 
 Así planeamos construir CompuCel. Vamos marcando cada punto cuando queda terminado y probado.
 
+## Fase 0: análisis y diseño
+
+- [x] Documento del proyecto con objetivos, alcance y arquitectura (Laboratorio 1)
+- [x] Diseño de UI/UX en Figma con 52 pantallas en modo claro y oscuro (Laboratorio 2)
+
 ## Fase 1: app base con Firebase (Parcial 2)
 
 - [x] Pantalla de inicio (splash) con el logo
