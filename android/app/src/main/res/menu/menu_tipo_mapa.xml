@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tipos de mapa, como en la clase de Google Maps -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mapa_normal"
+        android:title="@string/mapa_normal" />
+    <item
+        android:id="@+id/mapa_satelite"
+        android:title="@string/mapa_satelite" />
+    <item
+        android:id="@+id/mapa_terrain"
+        android:title="@string/mapa_relieve" />
+    <item
+        android:id="@+id/mapa_hybrid"
+        android:title="@string/mapa_hibrido" />
+</menu>

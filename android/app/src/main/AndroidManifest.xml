@@ -19,6 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CompuCel">
 
+        <!-- Google Maps la necesita en Android 9 o superior (documentacion de Maps SDK) -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />

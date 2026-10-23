@@ -193,4 +193,11 @@
     </plurals>
     <string name="sync_nada">No hay cambios pendientes</string>
     <string name="sync_sin_conexion">Sin conexión. Los cambios siguen guardados en el dispositivo</string>
+    <!-- Mapa -->
+    <string name="mapa_normal">Normal</string>
+    <string name="mapa_satelite">Satélite</string>
+    <string name="mapa_relieve">Relieve</string>
+    <string name="mapa_hibrido">Híbrido</string>
+    <string name="marcador_titulo">CompuCel Santa Ana</string>
+    <string name="marcador_detalle">Taller de reparación de celulares y computadoras</string>
 </resources>
