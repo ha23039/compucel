@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tokens de color del diseno (modo oscuro) -->
+<resources>
+    <color name="background">#0E1113</color>
+    <color name="surface">#16191C</color>
+    <color name="surface_container">#1F2428</color>
+    <color name="outline">#2B3137</color>
+    <color name="outline_strong">#3B434A</color>
+    <color name="on_surface">#E6E9EC</color>
+    <color name="on_surface_variant">#B4BCC3</color>
+    <color name="on_surface_subtle">#8E98A1</color>
+    <color name="primary">#34D399</color>
+    <color name="on_primary">#03251B</color>
+    <color name="primary_pressed">#6EE7B7</color>
+    <color name="primary_container">#0B3B2C</color>
+    <color name="on_primary_container">#A7F3D0</color>
+    <color name="primary_subtle">#0A2E23</color>
+    <color name="scrim">#99000000</color>
+
+    <color name="exito_fondo">#0B3B2C</color>
+    <color name="exito_texto">#6EE7B7</color>
+    <color name="exito_punto">#34D399</color>
+    <color name="advertencia_fondo">#3A2A0A</color>
+    <color name="advertencia_texto">#FCD34D</color>
+    <color name="advertencia_punto">#FBBF24</color>
+    <color name="error_fondo">#431316</color>
+    <color name="error_texto">#FCA5A5</color>
+    <color name="error_punto">#F87171</color>
+    <color name="neutro_fondo">#232A2F</color>
+    <color name="neutro_texto">#B4BCC3</color>
+    <color name="neutro_punto">#8E98A1</color>
+</resources>
