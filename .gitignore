@@ -1,0 +1,23 @@
+# Android
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+.kotlin/
+*.apk
+*.aab
+
+# Configuracion de Firebase (cada integrante la descarga de la consola)
+google-services.json
+
+# Java y Maven
+target/
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
