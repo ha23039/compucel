@@ -219,4 +219,28 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
+
+    <!-- Chips de filtro (Activos / Inactivos) y Recordarme -->
+    <style name="Widget.CompuCel.Chip.Filtro" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_fondo</item>
+        <item name="chipStrokeColor">@color/chip_borde</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/chip_texto</item>
+        <item name="android:textAppearance">@style/TextAppearance.CompuCel.LabelLarge</item>
+        <item name="checkedIcon">@drawable/ic_check</item>
+        <item name="checkedIconTint">@color/on_primary_container</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="shapeAppearance">@style/Forma.CompuCel.Completa</item>
+    </style>
+    <style name="Forma.CompuCel.Completa" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Boton flotante del diseno: 56 dp, radio 16, esmeralda -->
+    <style name="Widget.CompuCel.Fab" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="tint">@color/on_primary</item>
+        <item name="shapeAppearanceOverlay">@style/Forma.CompuCel.Grande</item>
+    </style>
 </resources>

@@ -78,7 +78,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipRecordarme"
-            style="@style/Widget.Material3.Chip.Filter"
+            style="@style/Widget.CompuCel.Chip.Filtro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_3"

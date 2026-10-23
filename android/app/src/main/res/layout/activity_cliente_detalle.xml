@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CLI-02 Detalle de cliente (sin historial de ordenes en esta version) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/surface"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/cliente"
+        app:titleTextAppearance="?attr/textAppearanceTitleLarge"
+        app:titleTextColor="@color/on_surface" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/outline" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/space_4">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_4">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvAvatar"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:background="@drawable/fondo_avatar"
+                            android:gravity="center"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textColor="@color/on_primary_container" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_4"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvNombre"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceTitleLarge"
+                                android:textColor="@color/on_surface" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/badgeEstado"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/fondo_badge_exito"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="10dp"
+                                    android:paddingTop="@dimen/space_1"
+                                    android:paddingEnd="10dp"
+                                    android:paddingBottom="@dimen/space_1">
+
+                                    <ImageView
+                                        android:id="@+id/ivPuntoEstado"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
+                                        android:importantForAccessibility="no"
+                                        android:src="@drawable/punto"
+                                        app:tint="@color/exito_punto" />
+
+                                    <TextView
+                                        android:id="@+id/tvEstado"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="6dp"
+                                        android:text="@string/estado_activo"
+                                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                                        android:textColor="@color/exito_texto" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/badgePendiente"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/space_2"
+                                    android:background="@drawable/fondo_badge_advertencia"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="10dp"
+                                    android:paddingTop="@dimen/space_1"
+                                    android:paddingEnd="10dp"
+                                    android:paddingBottom="@dimen/space_1"
+                                    android:visibility="gone">
+
+                                    <ImageView
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
+                                        android:importantForAccessibility="no"
+                                        android:src="@drawable/punto"
+                                        app:tint="@color/advertencia_punto" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="6dp"
+                                        android:text="@string/cliente_pendiente"
+                                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                                        android:textColor="@color/advertencia_texto" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_4"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btLlamar"
+                            style="@style/Widget.CompuCel.Boton.Contorno"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:text="@string/llamar"
+                            app:icon="@drawable/ic_call"
+                            app:iconGravity="textStart"
+                            app:iconSize="20dp"
+                            app:iconTint="?attr/colorPrimary" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btCorreo"
+                            style="@style/Widget.CompuCel.Boton.Contorno"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="@dimen/space_3"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:text="@string/correo"
+                            app:icon="@drawable/ic_mail"
+                            app:iconGravity="textStart"
+                            app:iconSize="20dp"
+                            app:iconTint="?attr/colorPrimary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:text="@string/seccion_contacto"
+                android:textAppearance="@style/TextAppearance.CompuCel.Overline" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_4">
+
+                    <include
+                        android:id="@+id/filaTelefono"
+                        layout="@layout/fila_dato" />
+
+                    <include
+                        android:id="@+id/filaCorreo"
+                        layout="@layout/fila_dato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_3" />
+
+                    <include
+                        android:id="@+id/filaDireccion"
+                        layout="@layout/fila_dato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_3" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
