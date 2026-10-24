@@ -18,12 +18,14 @@ import java.util.List;
 import sv.edu.ues.dam235.compucel.datos.Resultado;
 import sv.edu.ues.dam235.compucel.datos.local.ClienteEntity;
 import sv.edu.ues.dam235.compucel.datos.local.UsuarioEntity;
+import sv.edu.ues.dam235.compucel.datos.local.ServicioEntity;
 
 /** Base de datos remota en Cloud Firestore (colecciones "usuarios" y "clientes"). */
 public class FirestoreRemoto implements RemotoDatos {
 
     private static final String USUARIOS = "usuarios";
     private static final String CLIENTES = "clientes";
+    private static final String SERVICIOS = "servicios";
 
     private final FirebaseFirestore db;
 
@@ -84,6 +86,36 @@ public class FirestoreRemoto implements RemotoDatos {
                             List<ClienteEntity> lista = new ArrayList<>();
                             for (QueryDocumentSnapshot documento : task.getResult()) {
                                 lista.add(ClienteEntity.fromMap(documento.getId(), documento.getData()));
+                            }
+                            resultado.exito(lista);
+                        } else {
+                            resultado.error(task.getException());
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void guardarServicio(ServicioEntity servicio, Resultado<Void> resultado) {
+        db.collection(SERVICIOS).document(servicio.id).set(servicio.toMap())
+                .addOnCompleteListener(alTerminar(resultado));
+    }
+
+    @Override
+    public void eliminarServicio(String id, Resultado<Void> resultado) {
+        db.collection(SERVICIOS).document(id).delete().addOnCompleteListener(alTerminar(resultado));
+    }
+
+    @Override
+    public void listarServicios(Resultado<List<ServicioEntity>> resultado) {
+        db.collection(SERVICIOS).get(Source.SERVER)
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<ServicioEntity> lista = new ArrayList<>();
+                            for (QueryDocumentSnapshot documento : task.getResult()) {
+                                lista.add(ServicioEntity.fromMap(documento.getId(), documento.getData()));
                             }
                             resultado.exito(lista);
                         } else {

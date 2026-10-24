@@ -37,7 +37,7 @@ public class SincronizadorTest {
         Context ctx = ApplicationProvider.getApplicationContext();
         db = Room.inMemoryDatabaseBuilder(ctx, AppDatabase.class).allowMainThreadQueries().build();
         remoto = new RemotoFalso();
-        sincronizador = new Sincronizador(db.usuarioDao(), db.clienteDao(), remoto, red::get, Runnable::run);
+        sincronizador = new Sincronizador(db.usuarioDao(), db.clienteDao(), db.servicioDao(), remoto, red::get, Runnable::run);
     }
 
     @After

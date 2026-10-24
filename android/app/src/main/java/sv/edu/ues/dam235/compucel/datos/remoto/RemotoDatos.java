@@ -5,6 +5,7 @@ import java.util.List;
 import sv.edu.ues.dam235.compucel.datos.Resultado;
 import sv.edu.ues.dam235.compucel.datos.local.ClienteEntity;
 import sv.edu.ues.dam235.compucel.datos.local.UsuarioEntity;
+import sv.edu.ues.dam235.compucel.datos.local.ServicioEntity;
 
 /**
  * Operaciones con la base de datos remota. Hoy la implementa Firestore;
@@ -22,4 +23,10 @@ public interface RemotoDatos {
     void eliminarCliente(String id, Resultado<Void> resultado);
 
     void listarClientes(Resultado<List<ClienteEntity>> resultado);
+
+    void guardarServicio(ServicioEntity servicio, Resultado<Void> resultado);
+
+    void eliminarServicio(String id, Resultado<Void> resultado);
+
+    void listarServicios(Resultado<List<ServicioEntity>> resultado);
 }

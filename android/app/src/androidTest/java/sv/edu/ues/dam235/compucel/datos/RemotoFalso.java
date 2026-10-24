@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import sv.edu.ues.dam235.compucel.datos.local.ClienteEntity;
 import sv.edu.ues.dam235.compucel.datos.local.UsuarioEntity;
+import sv.edu.ues.dam235.compucel.datos.local.ServicioEntity;
 import sv.edu.ues.dam235.compucel.datos.remoto.RemotoDatos;
 
 /** Nube en memoria para las pruebas. Puede fallar o no responder nunca. */
@@ -14,9 +15,37 @@ public class RemotoFalso implements RemotoDatos {
 
     public final Map<String, Map<String, Object>> usuarios = new ConcurrentHashMap<>();
     public final Map<String, Map<String, Object>> clientes = new ConcurrentHashMap<>();
+    public final Map<String, Map<String, Object>> servicios = new ConcurrentHashMap<>();
     public volatile boolean fallar;
     public volatile boolean noResponder;
     public volatile int escriturasCliente;
+
+    @Override
+    public void guardarServicio(ServicioEntity servicio, Resultado<Void> resultado) {
+        if (responder(resultado)) {
+            servicios.put(servicio.id, servicio.toMap());
+            resultado.exito(null);
+        }
+    }
+
+    @Override
+    public void eliminarServicio(String id, Resultado<Void> resultado) {
+        if (responder(resultado)) {
+            servicios.remove(id);
+            resultado.exito(null);
+        }
+    }
+
+    @Override
+    public void listarServicios(Resultado<List<ServicioEntity>> resultado) {
+        if (responder(resultado)) {
+            List<ServicioEntity> lista = new ArrayList<>();
+            for (Map.Entry<String, Map<String, Object>> e : servicios.entrySet()) {
+                lista.add(ServicioEntity.fromMap(e.getKey(), e.getValue()));
+            }
+            resultado.exito(lista);
+        }
+    }
 
     private boolean responder(Resultado<?> resultado) {
         if (noResponder) {

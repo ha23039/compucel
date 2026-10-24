@@ -27,6 +27,7 @@ public class SincronizacionActivity extends AppCompatActivity {
 
     private int pendientesUsuario;
     private int pendientesClientes;
+    private int pendientesServicios;
     private MaterialButton btSincronizar;
 
     @Override
@@ -51,6 +52,10 @@ public class SincronizacionActivity extends AppCompatActivity {
             pendientesClientes = n == null ? 0 : n;
             mostrar();
         });
+        Proveedor.servicios(this).pendientes().observe(this, n -> {
+            pendientesServicios = n == null ? 0 : n;
+            mostrar();
+        });
         btSincronizar.setOnClickListener(v -> sincronizar());
         mostrarErrores(SincronizarAccion.ultimoResumen());
     }
@@ -66,7 +71,7 @@ public class SincronizacionActivity extends AppCompatActivity {
     }
 
     private void mostrar() {
-        int total = pendientesUsuario + pendientesClientes;
+        int total = pendientesUsuario + pendientesClientes + pendientesServicios;
         View banner = findViewById(R.id.banner);
         ImageView ivBanner = findViewById(R.id.ivBanner);
         TextView tvBanner = findViewById(R.id.tvBanner);
@@ -83,6 +88,7 @@ public class SincronizacionActivity extends AppCompatActivity {
         }
         dato(findViewById(R.id.filaPerfil), R.string.modulo_perfil, pendientesUsuario);
         dato(findViewById(R.id.filaClientes), R.string.modulo_clientes, pendientesClientes);
+        dato(findViewById(R.id.filaServicios), R.string.modulo_servicios, pendientesServicios);
     }
 
     private void mostrarErrores(ResumenSync resumen) {

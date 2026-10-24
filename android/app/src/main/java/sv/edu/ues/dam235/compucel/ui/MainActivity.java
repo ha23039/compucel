@@ -28,6 +28,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import sv.edu.ues.dam235.compucel.R;
 import sv.edu.ues.dam235.compucel.datos.Proveedor;
 import sv.edu.ues.dam235.compucel.ui.clientes.ClientesFragment;
+import sv.edu.ues.dam235.compucel.ui.servicios.ServiciosFragment;
 import sv.edu.ues.dam235.compucel.util.Red;
 
 /** Home de la app: Toolbar con menu (Perfil, Ubicacion, Cerrar sesion) y barra de navegacion inferior. */
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private final MutableLiveData<Integer> pendientes = new MutableLiveData<>(0);
     private int pendientesUsuario;
     private int pendientesClientes;
+    private int pendientesServicios;
     private ConnectivityManager.NetworkCallback callbackRed;
 
     @Override
@@ -72,11 +74,15 @@ public class MainActivity extends AppCompatActivity {
         // Total de cambios pendientes (perfil + clientes) para la barra y la pantalla de inicio
         Proveedor.usuarios(this).pendientes().observe(this, n -> {
             pendientesUsuario = n == null ? 0 : n;
-            pendientes.setValue(pendientesUsuario + pendientesClientes);
+            pendientes.setValue(pendientesUsuario + pendientesClientes + pendientesServicios);
         });
         Proveedor.clientes(this).pendientes().observe(this, n -> {
             pendientesClientes = n == null ? 0 : n;
-            pendientes.setValue(pendientesUsuario + pendientesClientes);
+            pendientes.setValue(pendientesUsuario + pendientesClientes + pendientesServicios);
+        });
+        Proveedor.servicios(this).pendientes().observe(this, n -> {
+            pendientesServicios = n == null ? 0 : n;
+            pendientes.setValue(pendientesUsuario + pendientesClientes + pendientesServicios);
         });
         pendientes.observe(this, n -> actualizarIconoSync());
         hayRed.observe(this, conectado -> actualizarIconoSync());
@@ -147,6 +153,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, PerfilActivity.class));
     }
 
+    public void mostrarServicios() {
+        navegacion.setSelectedItemId(R.id.nav_servicios);
+    }
     public void abrirMapa() {
         startActivity(new Intent(this, MapaActivity.class));
     }
@@ -179,6 +188,9 @@ public class MainActivity extends AppCompatActivity {
         if (destino == R.id.nav_clientes) {
             fragment = new ClientesFragment();
             toolbar.setTitle(R.string.clientes);
+        } else if (destino == R.id.nav_servicios) {
+            fragment = new ServiciosFragment();
+            toolbar.setTitle(R.string.servicios);
         } else if (destino == R.id.nav_mas) {
             fragment = new MasFragment();
             toolbar.setTitle(R.string.nav_mas);

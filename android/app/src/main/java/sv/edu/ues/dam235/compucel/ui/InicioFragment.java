@@ -87,6 +87,8 @@ public class InicioFragment extends Fragment {
         view.findViewById(R.id.accesoSincronizar).setOnClickListener(v -> main.abrirSincronizacion());
         view.findViewById(R.id.accesoPerfil).setOnClickListener(v -> main.abrirPerfil());
         view.findViewById(R.id.cardAtencion).setOnClickListener(v -> main.abrirSincronizacion());
+        view.findViewById(R.id.accesoServicios).setOnClickListener(v -> main.mostrarServicios());
+
     }
 
     private static int saludo() {

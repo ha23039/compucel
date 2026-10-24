@@ -89,6 +89,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_3" />
+                    <include
+                        android:id="@+id/filaServicios"
+                        layout="@layout/fila_dato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_3" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

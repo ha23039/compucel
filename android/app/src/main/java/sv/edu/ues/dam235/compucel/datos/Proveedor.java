@@ -37,10 +37,15 @@ public final class Proveedor {
         return new ClienteRepositorio(AppDatabase.obtener(app).clienteDao(), remoto(), () -> Red.hayInternet(app), EXECUTOR);
     }
 
+    public static ServicioRepositorio servicios(Context context) {
+        Context app = context.getApplicationContext();
+        return new ServicioRepositorio(AppDatabase.obtener(app).servicioDao(), remoto(), () -> Red.hayInternet(app), EXECUTOR);
+    }
+
     public static Sincronizador sincronizador(Context context) {
         Context app = context.getApplicationContext();
         AppDatabase db = AppDatabase.obtener(app);
-        return new Sincronizador(db.usuarioDao(), db.clienteDao(), remoto(), () -> Red.hayInternet(app), EXECUTOR);
+        return new Sincronizador(db.usuarioDao(), db.clienteDao(), db.servicioDao(), remoto(), () -> Red.hayInternet(app), EXECUTOR);
     }
 
     public static Sesion sesion(Context context) {

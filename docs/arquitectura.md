@@ -12,7 +12,7 @@ datos/         Repositorios y sincronización
 util/          Validaciones, BCrypt, cifrado local y sesión
 ```
 
-Las pantallas solo hablan con los repositorios (`UsuarioRepositorio`, `ClienteRepositorio` y `Sincronizador`). Los repositorios usan Room y una implementación de `RemotoDatos`. Hoy esa implementación es `FirestoreRemoto`; en la fase 2 vamos a escribir otra que hable con la API REST de CompuCel, sin cambiar las pantallas.
+Las pantallas solo hablan con los repositorios (`UsuarioRepositorio`, `ClienteRepositorio`, `ServicioRepositorio` y `Sincronizador`). Los repositorios usan Room y una implementación de `RemotoDatos`. Hoy esa implementación es `FirestoreRemoto`; en la fase 2 vamos a escribir otra que hable con la API REST de CompuCel, sin cambiar las pantallas.
 
 Room nunca se usa en el hilo principal: los repositorios trabajan en un hilo aparte y las pantallas observan los datos con `LiveData`.
 
@@ -25,7 +25,7 @@ Room nunca se usa en el hilo principal: los repositorios trabajan en un hilo apa
 
 Algunas reglas que tomamos:
 
-- El id de cada cliente es un UUID que se genera en el teléfono y se usa igual en Firestore. Así, reintentar un envío no crea duplicados.
+- El id de cada cliente y servicio es un UUID que se genera en el teléfono y se usa igual en Firestore. Así, reintentar un envío no crea duplicados.
 - Un cambio pendiente en el teléfono nunca se sobrescribe con lo que viene de la nube.
 - Al eliminar sin conexión, el cliente se marca como eliminado y desaparece de la lista; se borra de Room cuando la nube confirma el borrado.
 - Desactivamos la caché propia de Firestore para que la única base local sea Room y los pendientes se vean en la app.

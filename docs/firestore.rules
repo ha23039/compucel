@@ -33,6 +33,21 @@ service cloud.firestore {
         && request.resource.data.actualizadoEn is int;
     }
 
+    // Servicios del taller: costo en USD y duracion aproximada en minutos.
+    match /servicios/{id} {
+      allow read, delete: if true;
+      allow create, update: if request.resource.data.keys().hasOnly(['nombre', 'descripcion', 'costo', 'tiempoMinutos', 'actualizadoEn'])
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() > 0
+        && request.resource.data.descripcion is string
+        && request.resource.data.descripcion.size() > 0
+        && request.resource.data.costo is number
+        && request.resource.data.costo >= 0
+        && request.resource.data.tiempoMinutos is int
+        && request.resource.data.tiempoMinutos > 0
+        && request.resource.data.actualizadoEn is int;
+    }
+
     // Cualquier otra coleccion queda cerrada
     match /{documento=**} {
       allow read, write: if false;

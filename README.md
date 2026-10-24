@@ -15,6 +15,7 @@ Lo que ya funciona en la app:
 - Inicio con resumen del taller, menú en la barra superior y barra de navegación.
 - Clientes: agregar, buscar, ver, editar, inactivar y eliminar.
 - Funcionamiento sin conexión: los cambios quedan pendientes y se envían con "Sincronizar ahora".
+- Servicios: agregar, editar y eliminar con nombre, descripción, costo y tiempo aproximado.
 - Perfil: cambio de nombre y de contraseña, apariencia clara u oscura y estado de la sincronización.
 - Mapa con la ubicación del taller.
 

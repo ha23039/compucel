@@ -66,6 +66,10 @@
         <activity
             android:name=".ui.clientes.ClienteDetalleActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.servicios.ServicioFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

@@ -4,6 +4,10 @@ Aquí anotamos los cambios importantes de cada versión. El formato se basa en [
 
 ## [Sin publicar]
 
+### Agregado
+
+- Catálogo de servicios con operaciones para agregar, editar y eliminar; se guarda en Room y se sincroniza con Firestore.
+
 ## [0.3.0] - 2026-10-24
 
 Primera versión de la app, entregada en el Parcial 2.

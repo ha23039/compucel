@@ -44,6 +44,7 @@
     <!-- Navegacion y menu -->
     <string name="nav_inicio">Inicio</string>
     <string name="nav_clientes">Clientes</string>
+    <string name="nav_servicios">Servicios</string>
     <string name="nav_mas">Más</string>
     <string name="perfil">Perfil</string>
     <string name="ubicacion_taller">Ubicación del taller</string>
@@ -63,6 +64,7 @@
     <string name="resumen_pendientes">Por sincronizar</string>
     <string name="acceso_nuevo_cliente">Nuevo cliente</string>
     <string name="acceso_clientes">Clientes</string>
+    <string name="acceso_servicios">servicios</string>
     <string name="acceso_ubicacion">Ubicación</string>
     <string name="acceso_sincronizar">Sincronizar</string>
     <string name="acceso_perfil">Perfil</string>
@@ -87,6 +89,24 @@
     </plurals>
     <string name="sincronizacion_al_dia">Todo sincronizado</string>
     <string name="mas_perfil_detalle">Nombre y contraseña</string>
+
+    <!-- Servicios -->
+    <string name="servicios">Servicios</string>
+    <string name="agregar_servicio">Agregar servicio</string>
+    <string name="editar_servicio">Editar servicio</string>
+    <string name="sin_servicios">Aún no hay servicios. Agrega el primero con el botón +.</string>
+    <string name="servicio_nombre">Nombre del servicio *</string>
+    <string name="servicio_descripcion">Descripción *</string>
+    <string name="servicio_costo">Costo (USD) *</string>
+    <string name="servicio_tiempo">Tiempo aproximado (minutos) *</string>
+    <string name="error_servicio_nombre">Ingresa el nombre del servicio</string>
+    <string name="error_servicio_descripcion">Ingresa una descripción</string>
+    <string name="error_servicio_costo">Ingresa un costo válido, igual o mayor que cero</string>
+    <string name="error_servicio_tiempo">Ingresa un tiempo en minutos mayor que cero</string>
+    <string name="servicio_guardado">Servicio guardado y sincronizado</string>
+    <string name="servicio_guardado_pendiente">Servicio guardado en el dispositivo; queda pendiente de sincronizar</string>
+    <string name="eliminar_servicio_titulo">¿Eliminar servicio?</string>
+    <string name="eliminar_servicio_mensaje">Se eliminará «%1$s» del catálogo.</string>
 
     <!-- Clientes -->
     <string name="clientes">Clientes</string>
@@ -180,6 +200,7 @@
     <string name="seccion_pendientes_modulo">Pendientes por módulo</string>
     <string name="modulo_perfil">Perfil de usuario</string>
     <string name="modulo_clientes">Clientes</string>
+    <string name="modulo_servicios">Servicios</string>
     <string name="seccion_errores">Errores</string>
     <string name="error_envio_detalle">No se pudo enviar. Servidor no disponible.</string>
     <string name="reintentar">Reintentar</string>
